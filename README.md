@@ -12,7 +12,7 @@ Parts of the code are already explained with comments in the modules but I'll ex
 
 **Also, the meleeData module is a module that has stored data about combos (so if I wanted, I could add new combos with different damage, stun and animations without hardcoding it)**
 
-To begin, the initMainCombat is the core of our M1 script.
+To begin, the initMainCombat is the **core** of our M1 script.
 It handles: Cooldown logic, Combo loop (punch1 -> finisher), Effects, etc.
 Before our main function, we assigned a few variables as tables.
 The reason for this is that we want it so every character has their own cooldown (so Player A doesn't affect Player B's cooldown).
@@ -35,3 +35,18 @@ Moving on, we take away the damage of how much damage data is set to the current
 Additionally, we make the other character(s) really slow (1.5 walk speed) and we use a task.delay() to make their walking speed normal again (16).
 After the animation marker function, we advance the combo step by 1 more for the character
 Finally, we have a check to see if our combo step is higher than everything thats in the default combo data and then we set it back to 1.
+
+In the mainCombatStart script, the logic is already done so not a lot of coding.
+We require the initMainCombat module to use it + we also get an eventsFolder because we do need to get a signal that input was sent in from the client.
+Roblox Studio automatically sends in the player as an argument when using remote events, useful because we need the player's character for our script.
+In our Start() function, we listen for our remote event when it fires.
+If our remote event fires, we use the Punch(character) function (sending in the player's character by defining it beforehand).
+
+In the modelAI script, this is our script that our NPC in this showcase will do.
+We're making the Model utilize the character argument in Punch(character).
+First of all, we make a Start() function and using task.spawn(function() inside of it to immediately execute our actual function.
+Secondly, we set the variables of 'nearestCharacter' to nil and 'nearestDistance' to the attackRange (shown in the script).
+Now, we iterate over every player inside of the game and calculating whether they're in range of the Model.
+Depending on how far they are, if they are close, they'd be the nearestCharacter + the target for the Model.
+We then check if there is a nearestCharacter and we rotate the Model using Lerp() to keep it simple to the nearestCharacter's CFrame.
+Finally, we use the Punch(Model) function and then make the task wait for attackDelay (so the Model isn't that quick).
