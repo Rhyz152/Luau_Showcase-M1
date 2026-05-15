@@ -57,7 +57,12 @@ function initMainCombat.Punch(character: Model)
 	local animator = humanoid:WaitForChild("Animator")
 	local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
-  --If the animation is at the point where the animation is punching (using animation markers)
+	-- animation
+	local animation: Animation = currentMoveData["animation"]
+	local punchTrack: AnimationTrack = animator:LoadAnimation(animation)
+	punchTrack:Play()
+
+     --If the animation is at the point where the animation is punching (using animation markers)
 	punchTrack:GetMarkerReachedSignal("Hit"):Connect(function()
 		--Play the swoosh sound cause of wind
 		clonedSwooshSFX:Play()
