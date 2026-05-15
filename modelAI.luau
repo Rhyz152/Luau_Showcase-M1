@@ -1,3 +1,5 @@
+--This module is for the Model's AI
+
 local Players = game:GetService("Players")
 
 local initMainCombat = require(script.Parent.Parent.Melee.initMainCombat)
