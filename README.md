@@ -22,3 +22,16 @@ Before anything, we check cooldowns for: Full combo reset (if the entire combo i
 Alright, now we have initialize our combo (so we set it to 1 if there was no combo before).
 We then have to get the full combo data from our meleeData module and then we index the combo to where our combo is at the momemnt (so if our combo number was at 2, we'd look for the 2nd position in the full combo table).
 Also, we get the data from the index we're on in the actual data (so if our currentMoveName was 3, we'd get the data from the meleeData about the 3rd position in the table).
+Then we get the character, humanoid (and animator inside), and the humanoid root part of the character that is punching.
+To play our animations, we get the animation data (which is an already existing Animation object inside of Studio so its more optimized) from our currentMoveData and we load it as an animation track.
+Then we play the animation.
+But this just plays an animation for now.
+So, we have an animation marker inside of our animations and we check if our animation is at that marker and as soon as it reaches the animation marker, we connect a function.
+In that function, we create the hitbox (used to track anything inside and applying danage) and set the CFrame to 3 studs in front of the character that is punching.
+Now, we iterate through everything touching the hitbox using workspace:GetPartsBoundInBox(hitbox.CFrame, hitbox.Size).
+This is better than using .Touched but we need to add filtering (because it is continously iterating through every part that is in bound of the hitbox).
+So, we use a table that stores the already hit characters and doesn't apply damage to them.
+Moving on, we take away the damage of how much damage data is set to the currentMoveData.
+Additionally, we make the other character(s) really slow (1.5 walk speed) and we use a task.delay() to make their walking speed normal again (16).
+After the animation marker function, we advance the combo step by 1 more for the character
+Finally, we have a check to see if our combo step is higher than everything thats in the default combo data and then we set it back to 1.
