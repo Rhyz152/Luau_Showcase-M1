@@ -1,8 +1,8 @@
-# NOTE: This reprository does not show the full scripts (for protection reasons)
+# NOTE: This repository does not show the full scripts (for protection reasons)
 
 # Introduction
 
-This reprository showcases an M1 system coded with Luau in Roblox Studio.
+This repository showcases an M1 system coded with Luau in Roblox Studio.
 Instead of using the default client->server, I used modules for reusability + we can make not just the players, but also NPCs use the M1s.
 In the background, I do have Module Loaders (which I will not be showing).
 
