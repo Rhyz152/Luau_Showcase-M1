@@ -1,4 +1,4 @@
-# NOTE: This repository does not show the full scripts (for protection reasons)
+# NOTE: This repository does not show the full scripts (for security reasons)
 
 # Introduction
 This repository showcases an M1 combat system coded with Luau in Roblox Studio.
