@@ -121,5 +121,7 @@ function initMainCombat.Punch(character: Model)
 	    end
 	elseif humanoid.Health <= 0 then
 		warn(character.Name.." cannot punch! They are dead.")
+       --Reset the characters combo
+		comboStep[character] = 1
 	end
 end
